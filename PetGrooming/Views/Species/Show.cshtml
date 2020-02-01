@@ -1,0 +1,23 @@
+﻿@model PetGrooming.Models.ViewModels.ShowSpecies
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+<div>Name : @Model.species.Name</div>
+<a href="/Species/List">Back to list</a>
+
+@*create view model *@
+@{ foreach (var pet in Model.species.Pets)
+    {
+        <div>
+            <span><a href="/Pet/Show/@pet.PetID">@pet.PetName</a></span>
+            <span>@pet.Species.Name</span>
+            <span>@pet.Weight</span>
+            <span><a href="/Pet/Update/@pet.PetID">Update Pet</a></span>
+            <span><a href="/Pet/Delete/@pet.PetID">Delete Pet</a></span>
+
+        </div>
+
+    }
+}

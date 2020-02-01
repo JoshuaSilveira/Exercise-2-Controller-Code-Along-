@@ -1,7 +1,71 @@
-﻿
+﻿@model PetGrooming.Models.ViewModels.UpdatePet
 @{
     ViewBag.Title = "Update";
 }
 
 <h2>Update</h2>
+<form method="post" action="/Pet/Update/@Model.pet.PetID">
+
+    @*petname: <input id="PetName" name="PetName" value="@Model.pet.PetName" />*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.pet.PetName, "Name", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pet.PetName)
+            @Html.ValidationMessageFor(model => model.pet.PetName)
+        </div>
+    </div>
+    @*petcolor:<input id="PetColor" name="PetColor" value="@Model.pet.Color" />*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.pet.Color, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pet.Color)
+
+        </div>
+    </div>
+    @*Weight:<input id="PetWeight" name="PetWeight" value="@Model.pet.Weight" />*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.pet.Weight, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pet.Weight)
+            @Html.ValidationMessageFor(model => model.pet.Weight)
+        </div>
+    </div>
+    @*notes:<textarea id="PetNotes" name="PetNotes">@Model.pet.Notes</textarea>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.pet.Notes, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.pet.Notes)
+        </div>
+    </div>
+    @*add foreach for option drop down*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.pet.Species.SpeciesID, "Species", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="speciesID" id="speciesID">
+                @{
+                    foreach (var species in Model.species)
+                    {
+                        var selected = "";
+                        if (Model.pet.SpeciesID == species.SpeciesID)
+                        {
+                            selected = "selected";
+                        }
+                        <option value=@species.SpeciesID @selected>@species.Name</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="submit" value="submit" />
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

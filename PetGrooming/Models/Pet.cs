@@ -24,9 +24,13 @@ namespace PetGrooming.Models
         */
         [Key]
         public int PetID { get; set; }
+        [Required]
         public string PetName { get; set; }
         //weight is in kilograms (kg)
+        [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Weight must be numeric")]
         public double Weight { get; set; }
+        
         public string Color { get; set; }
         public string Notes { get; set; }
 
@@ -36,6 +40,7 @@ namespace PetGrooming.Models
         
         public int SpeciesID { get; set; }
         [ForeignKey("SpeciesID")]
+        [Required]
         public virtual Species Species { get; set; }
     }
 }

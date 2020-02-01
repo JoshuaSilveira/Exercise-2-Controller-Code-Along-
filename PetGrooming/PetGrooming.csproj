@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202001221857295_species.designer.cs">
       <DependentUpon>202001221857295_species.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002010112561_EmptyMigration.cs" />
+    <Compile Include="Migrations\202002010112561_EmptyMigration.designer.cs">
+      <DependentUpon>202002010112561_EmptyMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GroomBooking.cs" />
     <Compile Include="Models\Groomer.cs" />
@@ -173,6 +177,8 @@
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\Species.cs" />
+    <Compile Include="Models\ViewModels\ShowSpecies.cs" />
+    <Compile Include="Models\ViewModels\UpdatePet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,10 +221,13 @@
     <Content Include="Views\Pet\List.cshtml" />
     <Content Include="Views\Pet\Add.cshtml" />
     <Content Include="Views\Pet\Update.cshtml" />
+    <Content Include="Views\Species\List.cshtml" />
+    <Content Include="Views\Species\Add.cshtml" />
+    <Content Include="Views\Species\Show.cshtml" />
+    <Content Include="Views\Species\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Species\" />
     <Folder Include="Wireframes_ERD\" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001221857295_species.resx">
       <DependentUpon>202001221857295_species.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002010112561_EmptyMigration.resx">
+      <DependentUpon>202002010112561_EmptyMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

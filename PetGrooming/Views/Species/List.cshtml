@@ -1,0 +1,32 @@
+﻿@model IEnumerable<PetGrooming.Models.Species>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Add a new species", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(item.Name, "Show", new { id = item.SpeciesID })
+        </td>
+        <td>
+            @Html.ActionLink("Update Species", "Update", new { id=item.SpeciesID }) |
+            @Html.ActionLink("Delete Species", "Delete", new { id=item.SpeciesID })
+        </td>
+    </tr>
+}
+
+</table>
