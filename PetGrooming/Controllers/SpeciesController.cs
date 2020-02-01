@@ -27,17 +27,17 @@ namespace PetGrooming.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add(String SpeciesName)
+        public ActionResult Add(string Name)
         {
             string query = "insert into species (Name) values (@SpeciesName)";
-            SqlParameter sqlparam = new SqlParameter("@SpeciesName", SpeciesName);
+            SqlParameter sqlparam = new SqlParameter("@SpeciesName", Name);
             db.Database.ExecuteSqlCommand(query, sqlparam);
             return RedirectToAction("List");
         }
 
         public ActionResult List()
         {
-            //How could we modify this to include a search bar?
+            
             List<Species> species = db.Species.SqlQuery("Select * from Species").ToList();
             return View(species);
         }
@@ -55,9 +55,11 @@ namespace PetGrooming.Controllers
             {
                 return HttpNotFound();
             }
+            //we have the particular species and the pets that belongs to it
             ShowSpecies viewmodel = new ShowSpecies();
             viewmodel.species = species;
             viewmodel.pets = pets;
+            //we can combine the two and send it to the view instead of just one
             return View(viewmodel);
         }
         public ActionResult Update(int id)
@@ -68,11 +70,11 @@ namespace PetGrooming.Controllers
             return View(slectedspecies);
         }
         [HttpPost]
-        public ActionResult Update(int id, string SpeciesName)
+        public ActionResult Update(int id, string Name)
         {
             string query = "update species set Name=@SpeciesName where SpeciesID=@id";
             SqlParameter[] sqlparams = new SqlParameter[2];
-            sqlparams[0] = new SqlParameter("@SpeciesName", SpeciesName);
+            sqlparams[0] = new SqlParameter("@SpeciesName", Name);
             sqlparams[1] = new SqlParameter("@id",id);
             db.Database.ExecuteSqlCommand(query, sqlparams);
 
@@ -88,14 +90,6 @@ namespace PetGrooming.Controllers
             return RedirectToAction("List");
         }
 
-        //TODO: Each line should be a separate method in this class
-        // List
-        // Show
-        // Add
-        // [HttpPost] Add
-        // Update
-        // [HttpPost] Update
-        // (optional) delete
-        // [HttpPost] Delete
+       
     }
 }

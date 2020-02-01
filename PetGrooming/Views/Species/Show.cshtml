@@ -3,21 +3,34 @@
     ViewBag.Title = "Show";
 }
 
-<h2>Show</h2>
+<h2>Show Species</h2>
 <div>Name : @Model.species.Name</div>
-<a href="/Species/List">Back to list</a>
+<a href="/Species/List">Back to list of species</a>
+<h4>Pets of this species</h4>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>Species</th>
+        <th>Weight</th>
+        <th></th>
+    </tr>
 
-@*create view model *@
-@{ foreach (var pet in Model.species.Pets)
+    <!--since the viewmodel has the list of pets we can can see all of the pets of this species type-->
+    @foreach (var Pet in Model.species.Pets)
     {
-        <div>
-            <span><a href="/Pet/Show/@pet.PetID">@pet.PetName</a></span>
-            <span>@pet.Species.Name</span>
-            <span>@pet.Weight</span>
-            <span><a href="/Pet/Update/@pet.PetID">Update Pet</a></span>
-            <span><a href="/Pet/Delete/@pet.PetID">Delete Pet</a></span>
-
-        </div>
-
+        <tr>
+            <td><a href="/Pet/Show/@Pet.PetID">@Pet.PetName</a></td>
+            <td>@Pet.Species.Name</td>
+            <td>@Pet.Weight</td>
+            <td>
+                <span><a href="/Pet/Update/@Pet.PetID">Update Pet</a></span> |
+                <span><a href="/Pet/Delete/@Pet.PetID">Delete Pet</a></span>
+            </td>
+        </tr>
     }
-}
+
+</table>
+
+

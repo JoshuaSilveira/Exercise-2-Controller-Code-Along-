@@ -4,8 +4,8 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
-
+<h2>List of Species</h2>
+<!--using htmlhelper again like in pet/update-->
 <p>
     @Html.ActionLink("Add a new species", "Add")
 </p>
@@ -17,16 +17,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Show", new { id = item.SpeciesID })
-        </td>
-        <td>
-            @Html.ActionLink("Update Species", "Update", new { id=item.SpeciesID }) |
-            @Html.ActionLink("Delete Species", "Delete", new { id=item.SpeciesID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Show", new { id = item.SpeciesID })
+            </td>
+            <td>
+                @Html.ActionLink("Update Species", "Update", new { id = item.SpeciesID }) |
+                @Html.ActionLink("Delete Species", "Delete", new { id = item.SpeciesID })
+            </td>
+        </tr>
+    }
 
 </table>

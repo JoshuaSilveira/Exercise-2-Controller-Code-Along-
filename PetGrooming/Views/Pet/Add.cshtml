@@ -6,14 +6,14 @@
 <h2>Add a New Pet</h2>
 
 <form method="POST" action="/Pet/Add">
-    <!-- TODO: format this nicely -->
+    <!-- TODO: Add validation like in pet/update-->
     <div><span>Name:</span><input id="PetName" type="text" name="PetName" /></div>
+
     <div>
         <span>Species:</span>
         <select id="SpeciesID" type="text" name="SpeciesID">
             @{ 
-                //A rendering loop for presenting a list of species
-                //The pet should be one of these species
+                <!-- loop through each species from the available model-->
                 foreach(var species in Model)
                 {
                     <option value="@species.SpeciesID">@species.Name</option>
